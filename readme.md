@@ -38,12 +38,25 @@ Here I'll resume what I deduced about the game:
 
 In the map I introduce numbering of regions in a clockwise fashion and going from outer regions to the inner ones.
 
+## The hitboxes problem
+The original map minigame is considered unfair for its difficulty by pretty much everyone but in reality it is also unfair mechanically.
+
+![](img/fakeregion.png)
+
+Clicking on the center of region #5 results in region #6 being clicked instead. That may lead players to believe that region #5 heats up region #7 too. In actuality it doesn't happen, It's just region #6 being activated. Meanwhile the real hitbox of region #5 is much higher, placed between region #12 and #13.
+
+![](img/realregion.png)
+*The real hitbox of region #5*
+
+As this is only a bug with hitboxes and all other properties are met it will be skipped in calculations below.
+
 ## The assymetric bordering phenomenon
 There's an interesting phenomenon. Heating up the region #5 heats up the region #14, but heating up the region #14 doesn't heat up the region #5. This runs contrary to a sensible implementation of real life physics. 
 
 I marked the assymetric bordering phenomenon on the map with arrows. An arrow with "Y" means "Yes, heating up this region heats up the neighbour" and an arrow with "N" means "No, heating up this region doesn't heat up the neighbour" 
 
-- [ ] Side quest: determine the the reason why the authors opted for this phenomenon
+This discrepancy with rules is caused most likely by accident. Region #14 does in fact heat up region #5 but its graphic is not updated. You can check it by clicking region #14 four times then clicking region #5 once (click the real hitbox of region #5!) - it should turn from state 0.0 to 3.0 in an instant.
+The rest of adjacent regions to region #5 update its graphics properly. The region #14 is the only exception. Furthermore it only works while region #5 is at stage 0.0 any higher stage updates properly.
 
 # Coming to a model for this problem
 
