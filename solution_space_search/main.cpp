@@ -2,8 +2,8 @@
 // Created by Krzysztof Mitko on 12.04.2024.
 //
 #include <iostream>
-#include "Data Structures/Graph.h"
-#include "Algorithms/Brute_force.h"
+#include "Data Structures/Graph.cpp"
+#include "Algorithms/Brute_force.cpp"
 
 using namespace std;
 

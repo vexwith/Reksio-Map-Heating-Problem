@@ -11,6 +11,7 @@
 using namespace std;
 
 class Brute_force {
+    std::vector new_vector;
     vector<vector<int>> perfect_solutions = vector<vector<int>>();
     vector<vector<int>> acceptable_solutions = vector<vector<int>>(); // this excludes the perfect_solutions
     Graph* graph;

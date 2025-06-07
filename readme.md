@@ -167,11 +167,17 @@ The fruit of considerations in this chapter is a solution space search based on 
 
 The space search is reduced to user input represented by vectors, whose sum of elements is between the upper and lower bound. Let's take the classic example of graph present in *Reksio i Skarb Piratów*:
 - pure brute force considers 43 046 721 vectors
-- brute force enriched by upper and lower bound considers... ??? vectors (for sure it's less than 43 046 721)
-  - [ ] calculate the number of vectors
+- DFS enriched by upper and lower bound considers 18 925 047 vectors
+  - [X] ~~calculate the number of vectors~~ update - calculations done
+- (NEW) DFS with failed branch cutting considers only 283 674 vectors!
 
 # Code
-I've implemented the classic bruteforce method, since my computer goes theough the solution space in about 10 seconds.
+I've implemented the classic bruteforce method, since my computer goes through the solution space in about 10 seconds.
+
+vexwith: I've added a python script that finds the best solution not by brute force but using DFS algorithm. First checked with just the upper and lower bound constraint it calculates about 2 times as fast. Then with failed branch cutting it speeds up dramaticaly by roughly 151 times! It doesn't need lower and upper bound anymore.
+I've also tried to optimize it by finding a real upper bound. It works by clicking every piece 2 times starting from the Node with lowest level and finishes when the overall heat crosses the maximal heat value.
+Unfortunetly this idea did not change the number of vectors checked since the failed branch cutting already cannot go past this real upper bound since there is no combination that would give lower heat than that starting from the lowest level Nodes.
+In conclusion DFS with failed branch cutting works the best. It now takes almost an instant rather than 10 seconds.
 
 # Results
 ![](img/solutions.svg)

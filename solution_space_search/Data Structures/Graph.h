@@ -6,7 +6,7 @@
 #define REKSIO_MAP_HEATING_PROBLEM_GRAPH_H
 
 #include <string>
-#include "Node.h"
+#include "Node.cpp"
 
 using namespace std;
 
